@@ -10,19 +10,25 @@ public class Line {
         this.p1 = p1;
         this.p2 = p2;
         setSlope();
-        setYInt();
+        setYIntercept();
     }
 
     Line(Point p, double slope) {
         p1 = p;
         this.slope = slope;
-        setYInt();
+        setYIntercept();
     }
 
-    void setYInt() {
+    void setYIntercept() {
         if(slope != Double.POSITIVE_INFINITY) {
             yIntercept = p1.getY() - slope * p1.getX();
+        } else {
+            yIntercept = Double.NaN;
         }
+    }
+
+    double getYIntercept() {
+        return yIntercept;
     }
 
     void setSlope() {

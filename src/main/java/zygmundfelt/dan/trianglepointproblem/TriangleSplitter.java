@@ -31,7 +31,7 @@ public class TriangleSplitter {
         double maxY = Math.max(triangle.p1.getY(), Math.max(triangle.p2.getY(), triangle.p3.getY()));
 
         if(maxY == triangle.p1.getY()) {
-            dividingLine = new Line(triangle.p1, )
+            //dividingLine = new Line(triangle.p1, )
         }
     }
 

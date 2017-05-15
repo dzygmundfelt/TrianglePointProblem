@@ -1,17 +1,17 @@
 package zygmundfelt.dan.trianglepointproblem;
 
 public class HorizontalLineSegment {
-    Point p1;
-    Point p2;
+    double yValue;
+    double xLeft;
+    double xRight;
 
-    HorizontalLineSegment(Point p1, Point p2) {
-        this.p1 = p1;
-        this.p2 = p2;
+    HorizontalLineSegment(double y, double x1, double x2) {
+        yValue = y;
+        xLeft = Math.min(x1, x2);
+        xRight = Math.max(x1, x2);
     }
 
-    boolean liesOn(Point p) {
-        return p.getY() == p1.getY() &&
-                (p.getX() > p1.getX() && p.getX() < p2.getX() ||
-                        p.getX() < p1.getX() && p.getX() > p2.getX());
+    boolean contains(Point p) {
+        return p.getY() == yValue && p.getX() >= xLeft && p.getX() <= xRight;
     }
 }
