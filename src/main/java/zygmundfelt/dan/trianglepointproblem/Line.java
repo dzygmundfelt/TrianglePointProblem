@@ -50,4 +50,8 @@ public class Line {
 
         return p.getY() == slope * p.getX() + yIntercept;
     }
+
+    Point getPoint() {
+        return p1;
+    }
 }

@@ -30,11 +30,19 @@ public class TriangleSplitter {
     }
 
     public void createDividingLine() {
+        Point p = findMiddleYPoint();
+        Line line = getLineNotContainingMiddleYPoint(p);
+        dividingLine = findHLSBetweenPointAndLine(p, line);
+    }
 
-        //get the line that doesn't contain middleYPoint
-
-        //find the horizontal line segment between mYP and that line
-
+    public Line getLineNotContainingMiddleYPoint(Point p) {
+        if(!triangle.line1.contains(p)) {
+            return triangle.line1;
+        } else if(!triangle.line2.contains(p)) {
+            return triangle.line2;
+        } else {
+            return triangle.line3;
+        }
     }
 
 
@@ -61,6 +69,16 @@ public class TriangleSplitter {
             }
         }
         return list.get(0);
+    }
+
+    /*
+    Returns a HorizontalLineSegment object connecting a point and a line.
+     */
+    public HorizontalLineSegment findHLSBetweenPointAndLine(Point point, Line line) {
+        if(line.getSlope() == Double.POSITIVE_INFINITY) {
+            return new HorizontalLineSegment(point.getY(), point.getX(), line.getPoint().getX());
+        }
+        return new HorizontalLineSegment(point.getY(), point.getX(), (point.getY() - line.getYIntercept()) / line.getSlope());
     }
 
 }
