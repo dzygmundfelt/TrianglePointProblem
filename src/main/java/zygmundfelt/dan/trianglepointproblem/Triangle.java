@@ -2,6 +2,7 @@ package zygmundfelt.dan.trianglepointproblem;
 
 
 public class Triangle {
+    //TODO - maybe the Points and Lines should be stored in a List.
     Point p1;
     Point p2;
     Point p3;

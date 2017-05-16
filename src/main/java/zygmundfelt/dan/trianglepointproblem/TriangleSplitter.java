@@ -1,6 +1,8 @@
 package zygmundfelt.dan.trianglepointproblem;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class TriangleSplitter {
 
@@ -54,21 +56,8 @@ public class TriangleSplitter {
         list.add(triangle.p1);
         list.add(triangle.p2);
         list.add(triangle.p3);
-        double maxY = Math.max(triangle.p1.getY(), Math.max(triangle.p2.getY(), triangle.p3.getY()));
-        for(int i = 0; i < 3; i++) {
-            if(list.get(i).getY() == maxY) {
-                list.remove(i);
-                break;
-            }
-        }
-        double minY = Math.min(triangle.p1.getY(), Math.min(triangle.p2.getY(), triangle.p3.getY()));
-        for(int i = 0; i < 2; i++) {
-            if(list.get(i).getY() == minY) {
-                list.remove(i);
-                break;
-            }
-        }
-        return list.get(0);
+        Collections.sort(list, new YValueComparator());
+        return list.get(1);
     }
 
     /*
